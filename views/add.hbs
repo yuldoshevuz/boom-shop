@@ -1,0 +1,46 @@
+        <div class="container">
+            <h2 class="mb-5">Add Product</h2>
+            <div class="row justify-content-between align-items-center mb-4">
+                <div class="col-md-6">
+                    <img class="add-img form-img" width="90%" src="https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/attachments/delivery/asset/f8b9441ba26a64d840e7a94908f0e022-1610633445/Seen%202_1/create-animated-gifs-icon-or-banner-for-your-social-media.gif" alt="Add product gif">
+                </div>
+                <div class="col-md-6">
+                {{#if addErr}}
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Error:</strong> {{addErr}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                {{/if}}
+                    <form novalidate action="./add-product" method="post" class="form needs-validation mt-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="title" id="title" placeholder="Title" required>
+                            <label for="title">Title</label>
+                            <div class="invalid-feedback">Sorry, product title is required</div>
+                            <div class="valid-feedback">Good job</div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control" name="description" placeholder="Description" id="floatingTextarea2" style="height: 180px" required></textarea>
+                            <label for="description">Description</label>
+                            <div class="invalid-feedback">Please write a description about the product</div>
+                            <div class="valid-feedback">Good job</div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="image" id="title" placeholder="image" required>
+                            <label for="image">Photo url</label>
+                            <div class="invalid-feedback">Please enter a product image link</div>
+                            <div class="valid-feedback">Good job</div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">USD</span>
+                            <div class="form-floating">
+                                <input type="number" class="form-control" name="price" id="price" placeholder="Price" required>
+                                <label for="price">Price</label>
+                                <div class="invalid-feedback">Please enter the price of the product</div>
+                                <div class="valid-feedback">Good job</div>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>

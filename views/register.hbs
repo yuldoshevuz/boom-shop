@@ -1,0 +1,56 @@
+        <div class="container mt-2 mb-4 mt-lg-5">
+            <div class="row justify-content-between align-items-center">
+                <div class="col-md-6 col-lg-5">
+                    <img class="reg-gif form-img" width="100%" src="./images/sign-up.gif" alt="Sign-Up gif">
+                </div>
+                <div class="col-md-6 col-lg-7">
+                    <h2 class="fs-1 mb-4">Sign Up Now</h2>
+                    <div class="err-message__wrapper">
+                    {{#if registerErr}}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Error:</strong> {{registerErr}}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {{/if}}
+                    </div>
+                    <form novalidate action="./register" method="post" class="form needs-validation register-form">
+                        <div class="container">
+                            <div class="row gy-2">
+                                <div class="col-lg-6">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" name="firstName" class="form-control" id="firstName" placeholder="Enter FIrst Name:" required>
+                                    <div class="invalid-feedback">Please enter a name, it is required</div>
+                                    <div class="valid-feedback">Good job</div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" name="lastName" class="form-control" id="lastName" placeholder="Enter Last Name:" required>
+                                    <div class="invalid-feedback">Please enter a last name, it is required</div>
+                                    <div class="valid-feedback">Good job</div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="email">Email address</label>
+                                    <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com" required>
+                                    <div class="invalid-feedback">Please enter a valid email address</div>
+                                    <div class="valid-feedback">Good job</div>
+                                </div>
+                                <div class="col-12">
+                                    <label for="password">Password</label>
+                                    <div class="password-wrapper">
+                                        <input type="password" name="password" class="form-control form-password" id="password" placeholder="Create New Password" required>
+                                        <button onclick="passShowHide()" type="button" class="btn p-0 border-0">
+                                            <i class="fa-solid fa-eye passShowHideIcon"></i>
+                                        </button>
+                                    </div>
+                                    <div class="invalid-feedback">Please enter a password</div>
+                                    <div class="valid-feedback">Good job</div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary mt-3">Sign Up</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>

@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row justify-content-between">
+        <div class="col-lg-6">
+            <img class="product-info product-img img-fluid" src="{{product.image}}" alt="{{product.title}} Image">
+        </div>
+        <div class="col-lg-6 mt-3 mt-lg-0 mb-4">
+            <div class="product-info">
+                <h2 class="product-title mt-lg-2">{{product.title}}</h2>
+                <p class="product-text product-time m-0">Posted {{formatDate product.createdAt}}</p>
+                <h3 class="product-vendor mt-3 text-capitalize">Vendor: {{user.firstName}} {{user.lastName}}</h3>
+                <h3 class="product-price mb-2">Price: {{product.price}}.00 $</h3>
+                <p class="product-text">{{product.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+<header id="header" class="mb-5">
+    <nav class="navbar navbar-expand-md bg-body-tertiary">
+        <div class="container-fluid py-1 d-flex justify-content-between">
+            <a href="/" class="navbar-brand">
+                {{!-- <img width="68px" src="/images/logo.jpg" alt="Logo"> --}}
+                <span class="letter-b bg-primary"> <span>B</span> </span>
+                <h3 style="display:inline" class="fw-bold fs-5 text-primary text-uppercase m-0">oom Shop</h3>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                <ul class="navbar-nav align-items-center">
+                {{#if isHome}}
+                    <li class="nav-item">
+                        <a class="nav-link text-decoration-underline active py-0" aria-current="page" href="/">Home</a>
+                    </li>
+                {{else}}
+                    <li class="nav-item">
+                        <a class="nav-link py-0" aria-current="page" href="/">Home</a>
+                    </li>
+                {{/if}}
+                {{#if isProducts}}
+                    <li class="nav-item">
+                        <a class="nav-link py-0 text-decoration-underline active" href="/products">My products</a>
+                    </li>
+                {{else}}
+                    <li class="nav-item">
+                        <a class="nav-link py-0" href="/products">My products</a>
+                    </li>
+                {{/if}}
+                {{#if isAdd}}
+                    <li class="nav-item">
+                        <a class="nav-link active text-decoration-underline py-0" href="/add">Add product</a>
+                    </li>
+                {{else}}
+                    <li class="nav-item">
+                        <a class="nav-link py-0" href="/add">Add product</a>
+                    </li>
+                {{/if}}
+                {{#if isAuth}}
+                <li class="nav-item">
+                     <button type="button" class="btn btn-danger mt-2 mt-md-0 ms-0 ms-md-4" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Logout
+                    </button>
+                </li>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">Warning</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to log out?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger logout-yes">Yes</button>
+                                <button type="button" class="btn btn-success" data-bs-dismiss="modal">No</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{else}}
+                    <div class="btn-group nav-item ms-0 ms-md-3" role="group" aria-label="Basic outlined example">
+                    {{#if isLogin}}
+                        <a href="/login" type="button" class="btn btn-primary">Log in</a>
+                    {{else}}
+                        <a href="/login" type="button" class="btn btn-outline-primary">Log in</a>
+                    {{/if}}
+                    {{#if isRegister}}
+                        <a href="/register" type="button" class="btn btn-success">Sign Up</a>
+                    {{else}}
+                        <a href="/register" type="button" class="btn btn-outline-success">Sign Up</a>
+                    {{/if}}
+                    </div>
+                {{/if}}
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
