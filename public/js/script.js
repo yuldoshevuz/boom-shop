@@ -5,9 +5,10 @@ function selectAll(el) {
     return document.querySelectorAll(el)
 }
 window.addEventListener('load', (e) => {
-    select('body').classList.remove('overflow-hidden')
-    select('.overlay').classList.add('d-none')
-    select('.loader').classList.add('d-none')
+    // select('body').classList.remove('overflow-hidden')
+    // select('body').classList.add('overflow-y-scroll')
+    // select('.overlay').classList.add('d-none')
+    // select('.loader').classList.add('d-none')
 })
 
 
