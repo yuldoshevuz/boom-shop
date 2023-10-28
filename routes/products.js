@@ -5,7 +5,7 @@ const authMiddleware = require('../middlewares/auth')
 
 // Get Products page
 router.get('/products', authMiddleware, async (req, res) => {
-    const products = (await Products.find({ user: req.userId }).populate('user').lean()).reverse()
+    const products = (await Products.find({ user: req.userId, is_deleted: false }).populate('user').lean()).reverse()
     res.render('products', {
         title: 'Products | Boom Shop',
         isProducts: true,
@@ -38,7 +38,7 @@ router.post('/add-product', authMiddleware, async (req, res) => {
 })
 router.get('/product/:id', async (req, res) => {
     try {
-        const product = await Products.findById(req.params.id).lean().populate('user')
+        const product = await Products.findOne({ _id: req.params.id, is_deleted: false }).lean().populate('user')
         res.render('product', {
             title: `${product.title} | Boom Shop`,
             isProduct: true,
@@ -53,7 +53,7 @@ router.get('/product/:id', async (req, res) => {
 })
 router.get('/edit-product/:id', async (req, res) => {
     try {
-        const product = await Products.findById(req.params.id).lean().populate('user')
+        const product = await Products.findOne({ _id: req.params.id, is_deleted: false }).lean().populate('user')
         if (!product.user._id.equals(req.userId)) {
             return res.redirect('/')
         }
@@ -71,7 +71,7 @@ router.get('/edit-product/:id', async (req, res) => {
 router.post('/edit-product/:id', async (req, res) => {
     try {
         const { title, description, image, price } = req.body
-        const product = await Products.findById(req.params.id).populate('user')
+        const product = await Products.findOne({ _id: req.params.id, is_deleted: false }).populate('user')
         if (product.user._id.equals(req.userId)) {
             if (!title || !description || !image || !price) {
                 req.flash('editErr', 'Sorry, you did not fill out all the fields')
@@ -90,11 +90,11 @@ router.get('/delete-product/:id', (req, res) => {
 })
 router.post('/delete-product/:id', async (req, res) => {
     try {
-        const product = await Products.findById(req.params.id).populate('user')
+        const product = await Products.findOne( _id: req.params.id, is_deleted: false ).populate('user')
         if (!product.user._id.equals(req.userId)) {
             return res.redirect('/')
         }
-        const deleteProduct = await Products.findByIdAndDelete(req.params.id)
+        await Products.findByIdAndUpdate(req.params.id, { is_deleted: true })
         res.redirect('/')
     } catch (error) {
         res.redirect('/')
