@@ -90,7 +90,7 @@ router.get('/delete-product/:id', (req, res) => {
 })
 router.post('/delete-product/:id', async (req, res) => {
     try {
-        const product = await Products.findOne( _id: req.params.id, is_deleted: false ).populate('user')
+        const product = await Products.findOne({ _id: req.params.id, is_deleted: false }).populate('user')
         if (!product.user._id.equals(req.userId)) {
             return res.redirect('/')
         }
